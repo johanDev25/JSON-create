@@ -5,13 +5,14 @@ class Api::V1::ProductsController < ApplicationController
   end
 
   def create
-    @products = Product.create(product_params)
-    if @products.save
-      render json: @products, status: :created
-    else
-      render json:  @products.errors, status: :unprocessable_entity
-    end
-  end
+		@product = Product.create(product_params)
+
+		if @product.save
+			render json: @product, status: :created
+		else
+			render json: @product.errors, status: :unprocessable_entity
+		end
+	end
 
   private
   def product_params
