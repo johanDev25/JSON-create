@@ -7,9 +7,9 @@ class Api::V1::ProductsController < ApplicationController
   def create
     @products = Product.new(product_params)
     if @products.save
-      render json: @products, status: 201
+      render json: @products, status: :created
     else
-      render json:  @products.errors, status: 422
+      render json:  @products.errors, status: :unprocessable_entity
     end
   end
 
